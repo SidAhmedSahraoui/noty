@@ -1,0 +1,19 @@
+{
+  "name": "superhero",
+  "version": "1.0.0",
+  "description": "Super Hero website !",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sidahmedsahraoui/superhero.git"
+  },
+  "author": "Sid Ahmed Sahraoui",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sidahmedsahraoui/superhero/issues"
+  },
+  "homepage": "https://github.com/sidahmedsahraoui/superhero#readme"
+}
