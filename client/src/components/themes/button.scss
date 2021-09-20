@@ -1,0 +1,26 @@
+@import "./variables";
+
+button {
+  display: inline-block;
+  padding: 0.75rem 1.25rem;
+  font-family: monospace, sans-serif;
+  position: absolute;
+  top: 1rem;
+  right: 2rem;
+  color: $gray-300;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1.25rem;
+  border-color: $danger;
+  border-radius: 1rem;
+  border-bottom: 3px solid darken($danger, 10%);
+  background-color: darken($danger, 0%);
+  &:hover,
+  &:focus,
+  &:active,
+  &:not(:disabled):not(.disabled):active,
+  &:not(:disabled):not(.disabled):active:focus {
+    box-shadow: none;
+    background-color: darken($danger, 10%);
+  }
+}
