@@ -15,7 +15,7 @@ button {
   font-family: monospace, sans-serif;
   position: absolute;
   top: 2rem;
-  right: 2rem;
+  right: 5rem;
   color: $gray-100;
   cursor: pointer;
   font-weight: 600;
@@ -31,5 +31,28 @@ button {
   &:not(:disabled):not(.disabled):active:focus {
     box-shadow: none;
     background-color: darken($primary, 10%);
+  }
+}
+
+.img {
+  position: absolute;
+  top: 1rem;
+  left: 10rem;
+  width: 5rem;
+  height: 5rem;
+}
+
+@media (max-width: "700px") {
+  .img {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    width: 5rem;
+    height: 5rem;
+  }
+  button {
+    position: absolute;
+    top: 2rem;
+    right: 1rem;
   }
 }
