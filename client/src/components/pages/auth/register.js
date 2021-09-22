@@ -2,7 +2,8 @@ import React from "react";
 import { Helmet } from "react-helmet";
 import { Container, Form } from "react-bootstrap";
 import { WEBSITE_NAME } from "../../../utils/Data";
-import "../../themes/register.scss";
+import { Link } from "react-router-dom";
+import "../../themes/auth.scss";
 const Register = () => {
   return (
     <Container>
@@ -36,6 +37,13 @@ const Register = () => {
               name="password2"
             />
           </Form.Group>
+          <div className="submition">
+            <input type="submit" value="Register" className="button-primary" />
+            <p>Already have an account? </p>{" "}
+            <Link to="/login">
+              <h1 className="s-link">Sign in</h1>
+            </Link>
+          </div>
         </Form>
       </div>
     </Container>

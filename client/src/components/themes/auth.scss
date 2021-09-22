@@ -1,0 +1,84 @@
+@import "./variables";
+
+.root {
+  margin: auto;
+  margin-top: 2rem;
+  margin-bottom: 5rem;
+  width: 37%;
+  border-radius: 1.5rem;
+  box-shadow: 0rem 1.5rem 2.5rem rgba(49, 131, 194, 0.16);
+}
+
+h1 {
+  text-align: center;
+  color: $gray-800;
+}
+
+.form-container {
+  width: 450px;
+  border-radius: 1rem;
+  margin-top: 3rem;
+  padding: 40px 20px;
+  margin-bottom: 40px;
+}
+
+.form-container {
+  .form-label {
+    margin-left: 2rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: $gray-700;
+  }
+
+  input.form-control,
+  textarea.form-control {
+    display: block;
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+    margin-left: 1.75rem;
+    height: 2.5rem;
+    width: 80%;
+    border: 2px solid darken($light, 5%);
+    font-weight: 700;
+
+    &:focus {
+      box-shadow: none;
+      border: 2px solid darken($light, 15%);
+    }
+  }
+}
+
+.button-primary {
+  display: inline-block;
+  margin-left: 2rem;
+  padding: 0.75rem 1.25rem;
+  font-family: monospace, sans-serif;
+  color: $gray-300;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1.25rem;
+  border-color: $danger;
+  border-radius: 1rem;
+  border-bottom: 3px solid darken($danger, 10%);
+  background-color: darken($danger, 0%);
+  &:hover,
+  &:focus,
+  &:active,
+  &:not(:disabled):not(.disabled):active,
+  &:not(:disabled):not(.disabled):active:focus {
+    box-shadow: none;
+    background-color: darken($danger, 10%);
+  }
+}
+
+p {
+  display: inline-block;
+  margin-left: 2rem;
+  color: $gray-700;
+}
+.s-link {
+  color: $secondary;
+  display: inline-block;
+  font-weight: 300;
+  font-size: 1rem;
+}
