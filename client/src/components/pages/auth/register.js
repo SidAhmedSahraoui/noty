@@ -11,6 +11,7 @@ const Register = () => {
       </Helmet>
       <div className="root">
         <Form className="form-container">
+          <h1> Create your account</h1>
           <Form.Group>
             <Form.Label> Email </Form.Label>
             <Form.Control type="email" placeholder="Email" name="email" />

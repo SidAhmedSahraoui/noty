@@ -1,15 +1,13 @@
 @import "./variables";
 
 .foot {
-  position: fixed;
-  bottom: 0rem;
-  margin: auto;
+  position: relative;
   width: 100%;
   height: 10rem;
   background-color: $primary;
 }
 span {
-  position: fixed;
+  position: absolute;
   width: 100%;
   margin: auto;
   bottom: 1rem;
