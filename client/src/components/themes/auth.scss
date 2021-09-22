@@ -4,7 +4,7 @@
   margin: auto;
   margin-top: 2rem;
   margin-bottom: 5rem;
-  width: 37%;
+  width: 35%;
   border-radius: 1.5rem;
   box-shadow: 0rem 1.5rem 2.5rem rgba(49, 131, 194, 0.16);
 }
@@ -15,7 +15,7 @@ h1 {
 }
 
 .form-container {
-  width: 450px;
+  width: 90%;
   border-radius: 1rem;
   margin-top: 3rem;
   padding: 40px 20px;
@@ -28,6 +28,7 @@ h1 {
     font-size: 1.5rem;
     font-weight: 600;
     color: $gray-700;
+    width: 80%;
   }
 
   input.form-control,
@@ -81,4 +82,17 @@ p {
   display: inline-block;
   font-weight: 300;
   font-size: 1rem;
+}
+@media (max-width: "700px") {
+  .root {
+    width: 80%;
+  }
+  .form-container {
+    .form-label {
+      margin-left: 0.5rem;
+      font-size: 1rem;
+      font-weight: 200;
+      width: 80%;
+    }
+  }
 }

@@ -5,9 +5,9 @@ import { Container } from "react-bootstrap";
 const Footer = () => {
   return (
     <Container>
-      <div className="foot">
-        <span> All rights reserved 2021 </span>
-      </div>
+      <div className="copyright mx-auto">
+        <p>Copyright &copy; 2021 NoteSaver</p>
+      </div>{" "}
     </Container>
   );
 };
