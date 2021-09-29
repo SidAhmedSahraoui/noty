@@ -1,1 +1,1 @@
-export const WEBSITE_NAME = "NoteSaver";
+export const WEBSITE_NAME = "Noty";

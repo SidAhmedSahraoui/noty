@@ -1,0 +1,57 @@
+@import "./variables";
+
+.container-inner {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+  width: 80%;
+  margin: auto;
+  margin-top: 2rem !important ;
+  background-color: white;
+  border-bottom: 3px solid darken($light, 5%);
+  border-radius: 12px;
+  text-align: center;
+
+  .input-form {
+    .form-label {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: $gray-800;
+    }
+
+    .form-group {
+      .input-text {
+        font-weight: 500;
+        border-radius: 10px;
+        padding: 8px 20px;
+        border: 2px solid $gray-200;
+        &:focus {
+          border-color: $gray-400;
+          text-decoration: none;
+        }
+      }
+    }
+    .button-primary {
+      margin: 2rem 1rem;
+      background: $primary;
+      border: 0;
+      border-radius: 10px;
+      font-weight: 600;
+      color: #fff !important;
+      padding: 8px 20px !important;
+      &:not([disabled]):hover {
+        background: $primary;
+      }
+    }
+  }
+  .links {
+    min-height: 48px;
+    .link-secondary {
+      color: darken($secondary, 15%);
+      font-weight: 600;
+
+      &:hover {
+        color: darken($secondary, 25%);
+      }
+    }
+  }
+}

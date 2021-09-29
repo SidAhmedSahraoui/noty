@@ -1,0 +1,56 @@
+@import "./_variables";
+
+.main-container {
+  padding: 0rem;
+  margin-top: 2rem;
+  background-color: white;
+  border-bottom: 3px solid darken($gray-400, 5%);
+  border-radius: 12px;
+  position: relative;
+  .home {
+    width: 100%;
+    margin: auto;
+    margin-bottom: 5rem;
+    padding: 2rem;
+    display: flex;
+    flex-wrap: wrap-reverse;
+    justify-content: space-between;
+
+    .image {
+      width: 45%;
+      height: 400px;
+    }
+    .welcome {
+      margin-top: 5rem;
+      width: 55%;
+      height: 400px;
+      .title {
+        margin-top: 5rem;
+        font-size: 4rem;
+        font-weight: 700;
+      }
+      .paragraphe {
+        font-size: 2.5rem;
+        font-weight: 500;
+        strong {
+          display: inline-block;
+        }
+      }
+    }
+  }
+  .button-home {
+    padding: 10px 30px;
+    margin-top: 1rem !important;
+    color: $gray-100;
+    background-color: $primary;
+    border-bottom: 3px solid darken($primary, 10%);
+    color: white;
+    font-weight: 600;
+    font-size: 1.5rem;
+    display: inline-block;
+    position: absolute;
+    bottom: 2rem;
+    right: 50%;
+    transform: translateX(50%);
+  }
+}

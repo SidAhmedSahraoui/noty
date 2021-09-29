@@ -1,0 +1,67 @@
+@import "./_variables";
+
+.navbar {
+  border-bottom: 3px solid darken($light, 10%);
+  margin: 0%;
+  width: 100%;
+  background-color: white;
+
+  .button-nav {
+    padding: 10px 30px;
+    cursor: pointer;
+    color: $gray-100;
+    background-color: $light;
+    border-radius: 12px;
+    border: 1px solid darken($light, 10%);
+    border-bottom: 3px solid darken($light, 10%);
+    color: $gray_800;
+    font-weight: 400;
+    font-size: 1.5rem;
+    &:hover {
+      background-color: darken($light, 10%);
+      border: 1px solid darken($light, 10%);
+    }
+    &:focus {
+      background-color: darken($light, 10%);
+      border: 1px solid darken($light, 10%);
+    }
+  }
+  .logo {
+    width: 10rem;
+    height: 5rem;
+    padding: 0%;
+    margin: 0%;
+  }
+
+  .dropdown-toggle {
+    border: 3px solid darken($light, 5%);
+    text-decoration: none;
+    color: $gray-700;
+    background-color: $light;
+    border: 1px solid darken($light, 10%);
+    border-bottom: 3px solid darken($light, 10%);
+    padding: 1rem 3rem;
+    font-size: 1rem;
+    font-weight: 700;
+  }
+
+  .dropdown-menu {
+    position: absolute;
+    margin-top: 10px !important;
+
+    .dropdown-item {
+      padding: 10px 20px;
+      font-weight: 600;
+      color: darken($secondary, 10%);
+
+      .icon {
+        min-width: 20px;
+        color: $gray-400;
+      }
+
+      &:active {
+        background: $light;
+      }
+    }
+  }
+}

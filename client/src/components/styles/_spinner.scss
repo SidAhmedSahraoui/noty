@@ -1,0 +1,38 @@
+@import "./_variables";
+
+.spinner {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 10px;
+
+  div {
+    position: absolute;
+    width: 13px;
+    height: 13px;
+    border-radius: 100%;
+    background: lighten($secondary, 15%);
+    animation-timing-function: cubic-bezier(1, 1, 1);
+  }
+  .first {
+    left: 0px;
+    animation: effect 0.9s ease alternate infinite;
+  }
+  .second {
+    left: 16px;
+    animation: effect 0.9s ease alternate infinite;
+  }
+  .third {
+    left: 32px;
+    animation: effect 0.9s ease alternate infinite;
+  }
+
+  @keyframes effect {
+    from {
+      transform: translate(0, 0);
+    }
+    to {
+      transform: translate(24px, 0);
+    }
+  }
+}

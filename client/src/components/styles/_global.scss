@@ -1,0 +1,31 @@
+//themes
+@import "themes";
+@import "_variables";
+
+// Components
+@import "_navbar";
+@import "_spinner";
+@import "_alert";
+@import "_footer";
+
+// Pages
+@import "_auth";
+@import "_notes";
+@import "_settings";
+@import "_notFound";
+
+* {
+  transition: all ease-in-out 0.2s;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+  overflow-x: hidden;
+  color: #3d4659;
+}
+
+a {
+  &:hover {
+    text-decoration: none;
+  }
+}
