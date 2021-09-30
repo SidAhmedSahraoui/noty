@@ -65,7 +65,8 @@ const Navbar = () => {
         <Link to="/">
           <img className="logo" src={Logo} alt="Noty" />
         </Link>
-        <div> {5 === 3 ? userMenu : guestMenu} </div>
+        <div>{userMenu}</div>
+        <div>{guestMenu}</div>
       </Container>
     </div>
   );

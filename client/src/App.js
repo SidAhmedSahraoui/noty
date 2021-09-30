@@ -8,6 +8,8 @@ import store from "./redux/store";
 import Home from "./components/pages/home";
 import Login from "./components/auth/login";
 import Register from "./components/auth/register";
+import Notes from "./components/pages/notes";
+import AddNote from "./components/pages/addNote";
 
 //layout
 import Footer from "./components/layout/footer";
@@ -22,6 +24,8 @@ function App() {
           <Route exact path="/" component={Home} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/register" component={Register} />
+          <Route exact path="/notes" component={Notes} />
+          <Route exact path="/notes/add" component={AddNote} />
           <Footer />
         </div>
       </Provider>

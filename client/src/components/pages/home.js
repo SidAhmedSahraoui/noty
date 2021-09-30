@@ -35,7 +35,9 @@ const Home = () => {
               </p>
             </p>
           </div>
-          <img className="image" src={Home1} alt="home_image" />
+          <div className="image">
+            <img className="inner-img" src={Home1} alt="home_image" />
+          </div>
         </div>
         <Link to="/notes">
           <Button variant="primary" className="button-home">
