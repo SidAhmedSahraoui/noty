@@ -4,8 +4,15 @@
   width: 100%;
   text-align: center;
   padding-top: 2rem;
+
+  .cards-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+  }
   .button-primary {
-    margin-top: 1rem;
+    margin: 1rem 0rem;
     padding: 5px 15px;
     border-radius: 12px;
     color: $gray-100;
@@ -16,7 +23,6 @@
     font-size: 1.5rem;
   }
   .form-note {
-    width: 100%;
     margin: auto;
     text-align: center;
     display: flex;
@@ -25,7 +31,26 @@
     .input-note {
       width: 25rem;
       height: 10rem;
+      border: 2px solid $gray-700;
       border-radius: 12px;
+      padding: 8px 20px;
+      margin-bottom: 2rem;
+      &:focus {
+        border-color: $gray-400;
+      }
+    }
+    .input-text {
+      width: 25rem;
+      border-radius: 12px;
+      font-weight: 500;
+      border-radius: 10px;
+      padding: 8px 20px;
+      margin: 2rem;
+      border: 2px solid $gray-700;
+      &:focus {
+        border-color: $gray-400;
+        text-decoration: none;
+      }
     }
     .valid-form {
       display: flex;
@@ -34,16 +59,57 @@
       justify-content: space-evenly;
       align-items: center;
       .select-menu {
-        margin-top: 20px;
+        margin-top: 10px;
         text-decoration: none;
         color: $gray-700;
         background-color: $light;
-        border: 1px solid darken($light, 10%);
+        border: 1px solid darken($gray-700, 10%);
         border-radius: 12px;
-        border-bottom: 3px solid darken($light, 10%);
+        border-bottom: 3px solid darken($gray-700, 10%);
         padding: 1rem 3rem;
         font-size: 1rem;
         font-weight: 700;
+      }
+    }
+  }
+}
+
+.card {
+  width: 350px;
+  margin: 10px 0px;
+  padding: 8px;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0px 13px 26px rgba(18, 32, 43, 0.26);
+  .fav-icon {
+    padding: 10px 10px 10px 10px;
+    margin: 0%;
+    width: 3rem;
+    background-color: $primary;
+    position: absolute;
+    border-top-left-radius: 12px;
+    border-bottom-left-radius: 12px;
+    right: 0%;
+    top: 15px;
+    .icon {
+      color: $danger;
+      cursor: pointer;
+    }
+  }
+  .title {
+    color: $gray-800;
+  }
+  .content {
+    color: $gray-700;
+    font-weight: 600;
+  }
+}
+
+@media (max-width: "500px") {
+  .container-notes {
+    .form-note {
+      .input-note {
+        width: 80%;
       }
     }
   }

@@ -6,7 +6,6 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
 // Actions
-import { register, clearErrors } from "../../redux/actions/authActions";
 
 // Layouts
 import Spinner from "../layout/spinner";
@@ -52,16 +51,6 @@ const Register = (props) => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-
-    if (username === "" || email === "" || password === "") {
-      console.log("Please enter all fields danger");
-    } else if (password.length < 6) {
-      console.log("Password must contain at least 6 characters danger");
-    } else if (password !== password2) {
-      console.log("Passwords do not match danger");
-    } else {
-      await register({ username, email, phone, password });
-    }
   };
 
   return (
@@ -159,10 +148,4 @@ const Register = (props) => {
   );
 };
 
-const mapSateToProps = (state) => ({
-  error: state.auth.error,
-  isAuthenticated: state.auth.isAuthenticated,
-  loading: state.auth.loading,
-});
-
-export default connect(mapSateToProps, { register, clearErrors })(Register);
+export default Register;

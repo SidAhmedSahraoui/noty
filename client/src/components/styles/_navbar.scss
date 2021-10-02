@@ -1,13 +1,14 @@
 @import "./_variables";
 
 .navbar {
-  border-bottom: 3px solid darken($light, 10%);
+  box-shadow: 0px 10px 20px rgba(18, 32, 43, 0.26);
   margin: 0%;
   width: 100%;
   background-color: white;
+  display: flex;
 
   .button-nav {
-    padding: 10px 30px;
+    padding: 10px 20px;
     cursor: pointer;
     color: $gray-100;
     background-color: $light;
@@ -27,8 +28,8 @@
     }
   }
   .logo {
-    width: 10rem;
-    height: 5rem;
+    width: 8rem;
+    height: 4rem;
     padding: 0%;
     margin: 0%;
   }
@@ -40,7 +41,7 @@
     background-color: $light;
     border: 1px solid darken($light, 10%);
     border-bottom: 3px solid darken($light, 10%);
-    padding: 1rem 3rem;
+    padding: 1rem 2rem;
     font-size: 1rem;
     font-weight: 700;
   }
@@ -48,7 +49,6 @@
   .dropdown-menu {
     position: absolute;
     margin-top: 10px !important;
-
     .dropdown-item {
       padding: 10px 20px;
       font-weight: 600;

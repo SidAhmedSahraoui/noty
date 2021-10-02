@@ -1,21 +1,17 @@
 const mongoose = require("mongoose");
 
 const NoteSchema = mongoose.Schema({
-  user: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "users",
+  title: {
+    type: String,
+    required: true,
   },
   content: {
     type: String,
     required: true,
   },
-  favorite: {
-    type: Boolean,
-    default: false,
-  },
   type: {
     type: String,
-    default: "Note",
+    required: true,
   },
   date: {
     type: Date,

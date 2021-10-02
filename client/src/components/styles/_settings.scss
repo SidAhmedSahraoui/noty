@@ -1,0 +1,57 @@
+@import "./variables";
+
+.settings {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  margin-top: 3rem;
+
+  .input-form {
+    margin-bottom: 2rem;
+    .button-primary {
+      text-align: end;
+      margin: 2rem 1rem;
+      padding: 5px 12px;
+      border-radius: 12px;
+      color: $gray-100;
+      background-color: $primary;
+      border-bottom: 3px solid darken($primary, 10%);
+      color: white;
+      font-weight: 500;
+      font-size: 1.2rem;
+      margin-left: 24rem;
+      &:not([disabled]):hover {
+        background: $primary;
+      }
+    }
+    .title {
+      color: $gray-800;
+      font-weight: 700;
+      font-size: 2rem;
+      text-align: start;
+      width: 40%;
+      margin: auto;
+      margin-bottom: 2rem;
+    }
+
+    .form-group {
+      width: 40%;
+      margin: auto;
+      margin-bottom: 1rem;
+      display: flex;
+      justify-content: space-evenly;
+      .input-text {
+        width: 60%;
+        box-shadow: 0px 10px 20px rgba(18, 32, 43, 0.26);
+        border-radius: 12px;
+        width: 300px;
+      }
+      label {
+        color: $gray-700;
+        font-weight: 600;
+        font-size: 1.2rem;
+        width: 40%;
+      }
+    }
+  }
+}

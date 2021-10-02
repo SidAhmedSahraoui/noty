@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Container, Dropdown } from "react-bootstrap";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faUser,
@@ -11,17 +13,33 @@ import {
 
 // Images
 import Logo from "../../images/logo.png";
+// Actions
+import { logout, loadUser } from "../../redux/actions/authActions";
 
-const Navbar = () => {
+const Navbar = (props) => {
+  const { isAuthenticated, user, logout, loadUser } = props;
+  useEffect(() => {
+    // if (localStorage.token)
+    loadUser();
+
+    // eslint-disable-next-line
+  }, []);
+
+  const onLogout = () => {
+    logout();
+
+    // window.location.href = '/';
+  };
+
   const userMenu = (
     <>
       <Dropdown alignRight>
         <Dropdown.Toggle variant="outline-light">
-          Hey, <strong>sid ahmed</strong>
+          Hi 👋 <strong>{user && user.username}</strong>
         </Dropdown.Toggle>
 
         <Dropdown.Menu className="dropdown-menu">
-          <Link to="/" className="dropdown-item">
+          <Link to="/profile" className="dropdown-item">
             <FontAwesomeIcon className="icon mr-3" icon={faUser} size="lg" />
             Profile
           </Link>
@@ -38,7 +56,7 @@ const Navbar = () => {
             Settings
           </Link>
           <Dropdown.Divider></Dropdown.Divider>
-          <button className="dropdown-item">
+          <button onClick={onLogout} className="dropdown-item">
             <FontAwesomeIcon
               className="icon mr-3"
               icon={faSignOutAlt}
@@ -65,11 +83,23 @@ const Navbar = () => {
         <Link to="/">
           <img className="logo" src={Logo} alt="Noty" />
         </Link>
-        <div>{userMenu}</div>
-        <div>{guestMenu}</div>
+        <div>{isAuthenticated ? userMenu : guestMenu}</div>
+        <div>{isAuthenticated ? guestMenu : userMenu}</div>
       </Container>
     </div>
   );
 };
 
-export default Navbar;
+Navbar.propTypes = {
+  isAuthenticated: PropTypes.bool,
+  user: PropTypes.object,
+  logout: PropTypes.func.isRequired,
+  loadUser: PropTypes.func.isRequired,
+};
+
+const mapSateToProps = (state) => ({
+  isAuthenticated: state.auth.isAuthenticated,
+  user: state.auth.user,
+});
+
+export default connect(mapSateToProps, { logout, loadUser })(Navbar);

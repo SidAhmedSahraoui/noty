@@ -9,9 +9,9 @@ const Footer = () => {
       <div className="footer">
         Crafted with{" "}
         <span role="img" aria-label="heart">
-          ❤️
+          💜
         </span>{" "}
-        By
+        By{" "}
         <div className="social">
           <a
             href="https://github.com/sidahmedsahraoui"
@@ -21,15 +21,8 @@ const Footer = () => {
           >
             <FontAwesomeIcon className="icon" icon={faGithub} size="lg" />
           </a>
-          <a
-            href="https://instagram.com/sid_ahmed_sahraoui"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mr-3"
-          >
-            <FontAwesomeIcon className="icon" icon={faInstagram} size="lg" />
-          </a>
         </div>
+        <br />
       </div>
     </Container>
   );

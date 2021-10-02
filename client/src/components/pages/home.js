@@ -20,7 +20,7 @@ const Home = () => {
           <div className="welcome">
             <h1 className="title">Welcome to Noty!</h1>
             <p className="paragraphe">
-              Where you can save <br />
+              Where you can save
               <p>
                 every{" "}
                 <strong>

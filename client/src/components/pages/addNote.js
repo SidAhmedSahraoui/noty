@@ -1,9 +1,52 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { connect } from "react-redux";
 import { Helmet } from "react-helmet";
 import { WEBSITE_NAME } from "../../utils/Data";
-import { Container } from "react-bootstrap";
+import { Container, Button, Form } from "react-bootstrap";
 
-const AddNote = () => {
+// Actions
+import { saveNote, clearErrors } from "../../redux/actions/noteActions";
+
+const AddNote = (props) => {
+  const { error, saveNote, clearErrors } = props;
+  const [note, setNote] = useState({
+    title: "",
+    content: "",
+    type: "",
+  });
+
+  const { title, content, type } = note;
+
+  const onChange = (e) => {
+    setNote({ ...note, [e.target.name]: e.target.value });
+    console.log(note);
+  };
+
+  useEffect(() => {
+    if (error && error.length) {
+      if (typeof error === "object") {
+        error.forEach((err) => {
+          console.log(err.msg, "danger");
+        });
+      } else {
+        console.log(error, "danger");
+      }
+
+      clearErrors();
+    }
+
+    // eslint-disable-next-line
+  }, [error]);
+
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    if (title === "" || content === "" || type === "") {
+      console.log("Please enter all fields", "danger");
+    } else {
+      await saveNote({ title, content, type });
+    }
+  };
+
   return (
     <>
       <Helmet>
@@ -14,18 +57,35 @@ const AddNote = () => {
           <h4>
             <strong> Add Note </strong>
           </h4>
-          <div className="form-note">
+          <form className="form-note" onSubmit={onSubmit}>
+            <input
+              className="input-text"
+              type="text"
+              name="title"
+              value={title}
+              onChange={onChange}
+              placeholder="Title"
+              required
+            />
             <textarea
               className="input-note"
               type="text-area"
-              name="note"
-              placeholder="Type your note , reminder or tip"
+              name="content"
+              value={content}
+              onChange={onChange}
+              placeholder="Type note ..."
               required
             />
             <div className="valid-form">
               <div>
-                <select className="select-menu" name="note-type" id="note-type">
-                  <option className="select-item" value="Type">
+                <select
+                  value={type}
+                  onChange={onChange}
+                  className="select-menu"
+                  name="type"
+                  id="note-type"
+                >
+                  <option className="select-item" value="">
                     All Types
                   </option>
                   <option className="select-item" value="Note">
@@ -40,13 +100,20 @@ const AddNote = () => {
                 </select>
               </div>
               <div>
-                <button className="button-primary"> Save </button>
+                <Button className="button-primary" type="submit">
+                  Save
+                </Button>
               </div>
             </div>
-          </div>
+          </form>
         </div>
       </Container>
     </>
   );
 };
-export default AddNote;
+const mapSateToProps = (state) => ({
+  notes: state.note.notes,
+  error: state.note.error,
+});
+
+export default connect(mapSateToProps, { saveNote, clearErrors })(AddNote);

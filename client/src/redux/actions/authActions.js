@@ -12,12 +12,12 @@ import {
   CLEAR_ERRORS,
 } from "../types";
 
-import Token from "../../utils/Token";
+import setAuthToken from "../../utils/setAuthToken";
 
 // Load User
 export const loadUser = () => async (dispatch) => {
   if (localStorage.token) {
-    Token(localStorage.token);
+    setAuthToken(localStorage.token);
   } else {
     dispatch({
       type: AUTH_ERROR,

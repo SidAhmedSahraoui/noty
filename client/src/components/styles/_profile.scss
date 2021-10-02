@@ -1,0 +1,20 @@
+@import "./variables";
+
+.main-profile {
+  .general {
+    width: 80%;
+    margin: auto;
+    .avatar {
+      width: 150px;
+      height: 150px;
+      margin: 2rem;
+    }
+    .title {
+      color: $gray_800;
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+    font-size: 1rem;
+    text-align: center;
+  }
+}
