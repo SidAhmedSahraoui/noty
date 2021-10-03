@@ -28,9 +28,10 @@ router.post(
     }
 
     try {
-      const { title, content, type } = req.body;
+      const { fav, title, content, type } = req.body;
 
       const newNote = new Note({
+        fav,
         title,
         content,
         type,
@@ -44,4 +45,41 @@ router.post(
     }
   }
 );
+// make note favorite
+router.put("/fav/:id", async (req, res) => {
+  try {
+    let note = await Note.findById(req.params.id);
+    if (!note) return res.status(404).json([{ msg: "not found" }]);
+    note = await Note.findByIdAndUpdate(req.params.id, { fav: !note.fav });
+    res.json({ msg: "note marked as favorite" });
+  } catch (error) {
+    console.log(error.message);
+    res.status(500).send("Server Error");
+  }
+});
 module.exports = router;
+/*
+router.put("/fav/:id", auth, async (req, res) => {
+  try {
+    let message = await Message.findById(req.params.id);
+
+    if (!message) return res.status(404).json([{ msg: "Message not found" }]);
+
+    // Make sure user owns message
+    if (message.user.toString() !== req.user.id) {
+      return res.status(401).json([{ msg: "Not authorized" }]);
+    }
+
+    message = await Message.findByIdAndUpdate(
+      req.params.id,
+      { is_fav: !message.is_fav },
+      { new: true }
+    );
+
+    res.json(message);
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).send("Server Error");
+  }
+});
+*/

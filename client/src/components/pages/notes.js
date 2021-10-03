@@ -6,17 +6,13 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
 // Actions
-import {
-  getNotes,
-  favNote,
-  clearErrors,
-} from "../../redux/actions/noteActions";
+import { getNotes, clearErrors } from "../../redux/actions/noteActions";
 
 // App Layout
 import NoteCard from "../layout/noteCard";
 
 const Notes = (props) => {
-  const { user, notes, loading, favNote, getNotes, clearErrors } = props;
+  const { user, notes, loading, getNotes, clearErrors } = props;
   const [note, setNote] = useState("");
 
   useEffect(() => {
@@ -30,7 +26,7 @@ const Notes = (props) => {
   return (
     <>
       <Helmet>
-        <title>{`${WEBSITE_NAME} | Notes`}</title>
+        <title>{`${WEBSITE_NAME} | All Notes`}</title>
       </Helmet>
       <Container>
         <div className="container-notes">
@@ -39,6 +35,16 @@ const Notes = (props) => {
           </h4>
           <Link to="/notes/add">
             <button className="button-primary"> Add Note </button>
+          </Link>
+          <br />
+          <Link to="/my-notes">
+            <button className="link-primary"> Notes </button>
+          </Link>
+          <Link to="/my-reminders">
+            <button className="link-primary"> Reminders </button>
+          </Link>
+          <Link to="/my-tips">
+            <button className="link-primary"> Tips </button>
           </Link>
           <div className="cards-container">
             {!notes || !notes.length ? (
@@ -66,6 +72,5 @@ const mapSateToProps = (state) => ({
 
 export default connect(mapSateToProps, {
   getNotes,
-  favNote,
   clearErrors,
 })(Notes);

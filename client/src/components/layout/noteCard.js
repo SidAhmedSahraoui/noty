@@ -1,13 +1,25 @@
 import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHeart } from "@fortawesome/free-solid-svg-icons";
+import {
+  faHeart,
+  faClock,
+  faLaptopCode,
+  faBookmark,
+} from "@fortawesome/free-solid-svg-icons";
+import { connect } from "react-redux";
 
-const NoteCard = ({ note, markFavAction }) => {
-  const { title, fav, _id, content, date } = note || {};
-  const [Fav, setFav] = useState(note.fav);
+// Utils
+import Days from "../../utils/Days";
+
+// Actions
+import { favNote, clearErrors } from "../../redux/actions/noteActions";
+
+const NoteCard = ({ note, favNote }) => {
+  const { fav, _id, title, content, date } = note || {};
+  const [Fav, setFav] = useState(fav);
   const [style, setStyle] = useState({});
   useEffect(() => {
-    note.fav === true
+    Fav === true
       ? setStyle({ color: "#18ad85" })
       : setStyle({ color: "#fd485a" });
 
@@ -16,10 +28,11 @@ const NoteCard = ({ note, markFavAction }) => {
 
   const markFav = async () => {
     setFav(!Fav);
-    await markFavAction(_id);
-    /* Fav === true
+
+    await favNote(_id);
+    Fav === false
       ? setStyle({ color: "#18ad85" })
-      : setStyle({ color: "#fd485a" });*/
+      : setStyle({ color: "#fd485a" });
   };
   return (
     <>
@@ -33,10 +46,34 @@ const NoteCard = ({ note, markFavAction }) => {
             size="lg"
           />
         </div>
-        <h1 className="title">{note.title}</h1>
-        <p className="content">{note.content}</p>
+        <h3 className="title">{note.title}</h3>
+
+        <FontAwesomeIcon
+          style={{ color: "#6610f2" }}
+          className="type-icon"
+          icon={
+            note.type === "Note"
+              ? faBookmark
+              : note.type === "Reminder"
+              ? faClock
+              : faLaptopCode
+          }
+          size="lg"
+        />
+        <h4 className="content">{note.content}</h4>
+        <p className="day">{Days(note.date)}</p>
       </div>
     </>
   );
 };
-export default NoteCard;
+const mapSateToProps = (state) => ({
+  user: state.auth.user,
+  notes: state.note.notes,
+  loading: state.note.loading,
+  error: state.note.error,
+});
+
+export default connect(mapSateToProps, {
+  favNote,
+  clearErrors,
+})(NoteCard);

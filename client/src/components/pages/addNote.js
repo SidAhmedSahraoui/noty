@@ -10,12 +10,13 @@ import { saveNote, clearErrors } from "../../redux/actions/noteActions";
 const AddNote = (props) => {
   const { error, saveNote, clearErrors } = props;
   const [note, setNote] = useState({
+    Fav: false,
     title: "",
     content: "",
     type: "",
   });
 
-  const { title, content, type } = note;
+  const { Fav, title, content, type } = note;
 
   const onChange = (e) => {
     setNote({ ...note, [e.target.name]: e.target.value });
@@ -41,7 +42,7 @@ const AddNote = (props) => {
   const onSubmit = async (e) => {
     e.preventDefault();
     if (title === "" || content === "" || type === "") {
-      console.log("Please enter all fields", "danger");
+      console.log("Please enter all fields");
     } else {
       await saveNote({ title, content, type });
     }

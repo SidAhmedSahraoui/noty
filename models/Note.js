@@ -1,6 +1,10 @@
 const mongoose = require("mongoose");
 
 const NoteSchema = mongoose.Schema({
+  fav: {
+    type: Boolean,
+    default: false,
+  },
   title: {
     type: String,
     required: true,
