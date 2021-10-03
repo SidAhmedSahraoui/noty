@@ -6,9 +6,10 @@ import { Container, Button, Form } from "react-bootstrap";
 
 // Actions
 import { saveNote, clearErrors } from "../../redux/actions/noteActions";
+import { setAlert } from "../../redux/actions/alertActions";
 
 const AddNote = (props) => {
-  const { error, saveNote, clearErrors } = props;
+  const { error, saveNote, clearErrors, setAlert } = props;
   const [note, setNote] = useState({
     Fav: false,
     title: "",
@@ -42,9 +43,10 @@ const AddNote = (props) => {
   const onSubmit = async (e) => {
     e.preventDefault();
     if (title === "" || content === "" || type === "") {
-      console.log("Please enter all fields");
+      setAlert("Please enter all fields", "danger");
     } else {
       await saveNote({ title, content, type });
+      setAlert("Note saved", "success");
     }
   };
 
@@ -117,4 +119,6 @@ const mapSateToProps = (state) => ({
   error: state.note.error,
 });
 
-export default connect(mapSateToProps, { saveNote, clearErrors })(AddNote);
+export default connect(mapSateToProps, { saveNote, clearErrors, setAlert })(
+  AddNote
+);

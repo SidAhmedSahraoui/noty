@@ -3,12 +3,12 @@ import { v4 as uuid } from "uuid";
 
 // Set Alert
 export const setAlert =
-  (msg, timeout = 5000) =>
+  (msg, type, timeout = 5000) =>
   async (dispatch) => {
     const id = uuid();
     dispatch({
       type: SET_ALERT,
-      payload: { msg, id },
+      payload: { id, msg, type },
     });
 
     setTimeout(() => dispatch({ type: REMOVE_ALERT, payload: id }), timeout);

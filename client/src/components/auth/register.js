@@ -6,12 +6,15 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
 // Actions
+import { setAlert } from "../../redux/actions/alertActions";
+import { register, clearErrors } from "../../redux/actions/authActions";
 
 // Layouts
 import Spinner from "../layout/spinner";
 
 const Register = (props) => {
-  const { isAuthenticated, error, loading, register, clearErrors } = props;
+  const { setAlert, isAuthenticated, error, loading, register, clearErrors } =
+    props;
 
   const [user, setUser] = useState({
     username: "",
@@ -51,6 +54,15 @@ const Register = (props) => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
+
+    if (username === "" || phone === "" || email === "" || password === "") {
+      setAlert("Please enter all fields", "danger");
+    } else if (password.length < 6) {
+      setAlert("Password must be at least 6 characters", "danger");
+    } else {
+      // Register function
+      await register({ username, phone, email, password });
+    }
   };
 
   return (
@@ -148,4 +160,12 @@ const Register = (props) => {
   );
 };
 
-export default Register;
+const mapSateToProps = (state) => ({
+  error: state.auth.error,
+  isAuthenticated: state.auth.isAuthenticated,
+  loading: state.auth.loading,
+});
+
+export default connect(mapSateToProps, { register, clearErrors, setAlert })(
+  Register
+);

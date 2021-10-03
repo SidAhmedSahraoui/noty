@@ -12,6 +12,7 @@ app.use(express.json({ extended: false }));
 
 // Routes
 
+app.use("/api/users", require("./routes/users"));
 app.use("/api/notes", require("./routes/notes"));
 
 // Serve static assets in production

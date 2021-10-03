@@ -23,11 +23,11 @@
     font-size: 1.5rem;
   }
   .link-primary {
-    background: $primary;
+    display: inline-block;
     border: 0;
     border-radius: 10px;
     font-weight: 600;
-    color: #fff !important;
+    color: $danger !important;
     padding: 8px 20px !important;
     margin: 1rem;
   }

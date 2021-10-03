@@ -35,7 +35,7 @@ const Navbar = (props) => {
     <>
       <Dropdown alignRight>
         <Dropdown.Toggle variant="outline-light">
-          Hi 👋 <strong>{user && user.username}</strong>
+          Hi 👋 <strong>ahmed_dz</strong>
         </Dropdown.Toggle>
 
         <Dropdown.Menu className="dropdown-menu">
@@ -83,8 +83,8 @@ const Navbar = (props) => {
         <Link to="/">
           <img className="logo" src={Logo} alt="Noty" />
         </Link>
+
         <div>{isAuthenticated ? userMenu : guestMenu}</div>
-        <div>{isAuthenticated ? guestMenu : userMenu}</div>
       </Container>
     </div>
   );

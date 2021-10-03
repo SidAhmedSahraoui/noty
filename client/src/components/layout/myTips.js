@@ -9,9 +9,9 @@ import { connect } from "react-redux";
 import { getNotes, clearErrors } from "../../redux/actions/noteActions";
 
 // App Layout
-import NoteCard from "../layout/noteCard";
+import NoteCard from "./noteCard";
 
-const Notes = (props) => {
+const MyTips = (props) => {
   const { user, notes, loading, getNotes, clearErrors } = props;
   const [note, setNote] = useState("");
 
@@ -26,25 +26,31 @@ const Notes = (props) => {
   return (
     <>
       <Helmet>
-        <title>{`${WEBSITE_NAME} | All Notes`}</title>
+        <title>{`${WEBSITE_NAME} | All Tips`}</title>
       </Helmet>
       <Container>
         <div className="container-notes">
           <h4>
-            <strong> My Notes and Reminders</strong>
+            <strong> My Tips </strong>
           </h4>
           <Link to="/notes/add">
             <button className="button-primary"> Add Note </button>
           </Link>
           <br />
           <Link to="/my-notes">
-            <button className="link-primary"> Notes </button>
+            <span className="link-primary"> Notes </span>
           </Link>
           <Link to="/my-reminders">
-            <button className="link-primary"> Reminders </button>
+            <span className="link-primary"> Reminders </span>
           </Link>
           <Link to="/my-tips">
-            <button className="link-primary"> Tips </button>
+            <span className="link-primary"> Tips </span>
+          </Link>
+          <Link to="/notes">
+            <span className="link-primary"> All </span>
+          </Link>
+          <Link to="/favorite">
+            <span className="link-primary"> Favorite </span>
           </Link>
           <div className="cards-container">
             {!notes || !notes.length ? (
@@ -55,7 +61,13 @@ const Notes = (props) => {
                 </span>
               </h6>
             ) : (
-              notes.map((note) => <NoteCard key={note._id} note={note} />)
+              notes.map((note) =>
+                note.type === "Tip" ? (
+                  <NoteCard key={note._id} note={note} />
+                ) : (
+                  <></>
+                )
+              )
             )}
           </div>
         </div>
@@ -73,4 +85,4 @@ const mapSateToProps = (state) => ({
 export default connect(mapSateToProps, {
   getNotes,
   clearErrors,
-})(Notes);
+})(MyTips);
