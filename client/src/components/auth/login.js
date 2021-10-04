@@ -4,8 +4,11 @@ import { Helmet } from "react-helmet";
 import { WEBSITE_NAME } from "../../utils/Data";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
+
 // Actions
-import setAlert from "../../redux/actions/alertActions";
+import { setAlert } from "../../redux/actions/alertActions";
+import { login, clearErrors } from "../../redux/actions/authActions";
+
 // layouts
 import Spinner from "../layout/spinner";
 
@@ -48,7 +51,12 @@ const Login = (props) => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    console.log(user);
+
+    if (username === "" || password === "") {
+      setAlert("Please fill all fields", "danger");
+    } else {
+      await login({ username, password });
+    }
   };
 
   return (
@@ -104,4 +112,10 @@ const Login = (props) => {
   );
 };
 
-export default Login;
+const mapSateToProps = (state) => ({
+  error: state.auth.error,
+  isAuthenticated: state.auth.isAuthenticated,
+  loading: state.auth.loading,
+});
+
+export default connect(mapSateToProps, { login, clearErrors, setAlert })(Login);

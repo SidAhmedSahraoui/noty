@@ -2,12 +2,17 @@ const express = require("express");
 const router = express.Router();
 const { check, validationResult } = require("express-validator");
 
+// model
 const Note = require("../models/Note");
+const User = require("../models/User");
+
+// middleware
+const auth = require("../middleware/auth");
 
 // get all notes
-router.get("/", async (req, res) => {
+router.get("/", auth, async (req, res) => {
   try {
-    const notes = await Note.find().sort({
+    const notes = await Note.find({ user_id: req.user.id }).sort({
       date: -1,
     });
     res.json(notes);
@@ -20,6 +25,7 @@ router.get("/", async (req, res) => {
 // save note
 router.post(
   "/",
+  [check("user_id", "user_id is required").not().isEmpty()],
   [check("content", "Note content is required").not().isEmpty()],
   async (req, res) => {
     const errors = validationResult(req);
@@ -28,9 +34,15 @@ router.post(
     }
 
     try {
-      const { fav, title, content, type } = req.body;
+      const { user_id, fav, title, content, type } = req.body;
+      let user = await User.find({ _id: user_id });
+
+      if (!user || !user.length) {
+        return res.status(404).json([{ msg: "User not exists" }]);
+      }
 
       const newNote = new Note({
+        user_id,
         fav,
         title,
         content,
@@ -58,28 +70,3 @@ router.put("/fav/:id", async (req, res) => {
   }
 });
 module.exports = router;
-/*
-router.put("/fav/:id", auth, async (req, res) => {
-  try {
-    let message = await Message.findById(req.params.id);
-
-    if (!message) return res.status(404).json([{ msg: "Message not found" }]);
-
-    // Make sure user owns message
-    if (message.user.toString() !== req.user.id) {
-      return res.status(401).json([{ msg: "Not authorized" }]);
-    }
-
-    message = await Message.findByIdAndUpdate(
-      req.params.id,
-      { is_fav: !message.is_fav },
-      { new: true }
-    );
-
-    res.json(message);
-  } catch (error) {
-    console.error(error.message);
-    res.status(500).send("Server Error");
-  }
-});
-*/

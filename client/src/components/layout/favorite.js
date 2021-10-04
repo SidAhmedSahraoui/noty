@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import Helmet from "react-helmet";
 import { WEBSITE_NAME } from "../../utils/Data";
 import { Container } from "react-bootstrap";
@@ -12,16 +12,13 @@ import { getNotes, clearErrors } from "../../redux/actions/noteActions";
 import NoteCard from "./noteCard";
 
 const Favorite = (props) => {
-  const { user, notes, loading, getNotes, clearErrors } = props;
-  const [note, setNote] = useState("");
+  const { notes, getNotes } = props;
 
   useEffect(() => {
     getNotes();
 
     // eslint-disable-next-line
   }, []);
-
-  const { name, username, gender } = user || {};
 
   return (
     <>

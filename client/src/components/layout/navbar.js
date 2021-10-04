@@ -1,18 +1,18 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Container, Dropdown } from "react-bootstrap";
-import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faUser,
   faSignOutAlt,
-  faCog,
+  faHeart,
   faBookmark,
 } from "@fortawesome/free-solid-svg-icons";
 
 // Images
 import Logo from "../../images/logo.png";
+
 // Actions
 import { logout, loadUser } from "../../redux/actions/authActions";
 
@@ -35,7 +35,11 @@ const Navbar = (props) => {
     <>
       <Dropdown alignRight>
         <Dropdown.Toggle variant="outline-light">
-          Hi 👋 <strong>ahmed_dz</strong>
+          Hi{" "}
+          <span role="img" aria-label="imoji">
+            👋
+          </span>{" "}
+          <strong> {user && user.username} </strong>
         </Dropdown.Toggle>
 
         <Dropdown.Menu className="dropdown-menu">
@@ -51,9 +55,9 @@ const Navbar = (props) => {
             />
             Notes
           </Link>
-          <Link to="/settings" className="dropdown-item">
-            <FontAwesomeIcon className="icon mr-3" icon={faCog} size="lg" />
-            Settings
+          <Link to="/favorite" className="dropdown-item">
+            <FontAwesomeIcon className="icon mr-3" icon={faHeart} size="lg" />
+            Favorite
           </Link>
           <Dropdown.Divider></Dropdown.Divider>
           <button onClick={onLogout} className="dropdown-item">
@@ -83,23 +87,13 @@ const Navbar = (props) => {
         <Link to="/">
           <img className="logo" src={Logo} alt="Noty" />
         </Link>
-
         <div>{isAuthenticated ? userMenu : guestMenu}</div>
       </Container>
     </div>
   );
 };
-
-Navbar.propTypes = {
-  isAuthenticated: PropTypes.bool,
-  user: PropTypes.object,
-  logout: PropTypes.func.isRequired,
-  loadUser: PropTypes.func.isRequired,
-};
-
 const mapSateToProps = (state) => ({
   isAuthenticated: state.auth.isAuthenticated,
   user: state.auth.user,
 });
-
 export default connect(mapSateToProps, { logout, loadUser })(Navbar);

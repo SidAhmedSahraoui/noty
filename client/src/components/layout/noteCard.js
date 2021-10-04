@@ -7,9 +7,7 @@ import {
   faBookmark,
 } from "@fortawesome/free-solid-svg-icons";
 import { connect } from "react-redux";
-
-// Utils
-import Days from "../../utils/Days";
+import { Days } from "../../utils/Days";
 
 // Actions
 import { favNote, clearErrors } from "../../redux/actions/noteActions";
@@ -46,7 +44,7 @@ const NoteCard = ({ note, favNote }) => {
             size="lg"
           />
         </div>
-        <h3 className="title">{note.title}</h3>
+        <h3 className="title">{title}</h3>
 
         <FontAwesomeIcon
           style={{ color: "#6610f2" }}
@@ -60,8 +58,8 @@ const NoteCard = ({ note, favNote }) => {
           }
           size="lg"
         />
-        <h4 className="content">{note.content}</h4>
-        <p className="day">{Days(note.date)}</p>
+        <h4 className="content">{content}</h4>
+        <p className="day">{Days(date)}</p>
       </div>
     </>
   );

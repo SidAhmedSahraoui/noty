@@ -2,14 +2,15 @@ import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { Helmet } from "react-helmet";
 import { WEBSITE_NAME } from "../../utils/Data";
-import { Container, Button, Form } from "react-bootstrap";
+import { Container, Button } from "react-bootstrap";
 
 // Actions
+import { loadUser } from "../../redux/actions/authActions";
 import { saveNote, clearErrors } from "../../redux/actions/noteActions";
 import { setAlert } from "../../redux/actions/alertActions";
 
 const AddNote = (props) => {
-  const { error, saveNote, clearErrors, setAlert } = props;
+  const { error, saveNote, clearErrors, setAlert, user } = props;
   const [note, setNote] = useState({
     Fav: false,
     title: "",
@@ -17,7 +18,8 @@ const AddNote = (props) => {
     type: "",
   });
 
-  const { Fav, title, content, type } = note;
+  const { _id } = user || {};
+  const { title, content, type } = note;
 
   const onChange = (e) => {
     setNote({ ...note, [e.target.name]: e.target.value });
@@ -45,7 +47,7 @@ const AddNote = (props) => {
     if (title === "" || content === "" || type === "") {
       setAlert("Please enter all fields", "danger");
     } else {
-      await saveNote({ title, content, type });
+      await saveNote({ user_id: _id, title, content, type });
       setAlert("Note saved", "success");
     }
   };
@@ -117,8 +119,12 @@ const AddNote = (props) => {
 const mapSateToProps = (state) => ({
   notes: state.note.notes,
   error: state.note.error,
+  user: state.auth.user,
 });
 
-export default connect(mapSateToProps, { saveNote, clearErrors, setAlert })(
-  AddNote
-);
+export default connect(mapSateToProps, {
+  saveNote,
+  loadUser,
+  clearErrors,
+  setAlert,
+})(AddNote);

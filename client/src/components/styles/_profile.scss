@@ -4,6 +4,29 @@
   .general {
     width: 80%;
     margin: auto;
+    .day {
+      color: $gray-600;
+      font-weight: 600;
+    }
+    .control {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-evenly;
+      width: 80%;
+      margin: auto;
+      .button-primary {
+        margin: 1rem 0rem;
+        padding: 5px 15px;
+        border-radius: 12px;
+        color: $gray-100;
+        background-color: $primary;
+        border-bottom: 3px solid darken($primary, 10%);
+        color: white;
+        font-weight: 500;
+        font-size: 1.5rem;
+      }
+    }
     .avatar {
       width: 150px;
       height: 150px;

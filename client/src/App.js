@@ -12,7 +12,6 @@ import Register from "./components/auth/register";
 import AllNotes from "./components/pages/allNotes";
 import AddNote from "./components/pages/addNote";
 import Profile from "./components/pages/profile";
-import Settings from "./components/pages/settings";
 
 //layouts
 import Footer from "./components/layout/footer";
@@ -37,14 +36,17 @@ function App() {
               <Route exact path="/" component={Home} />
               <Route exact path="/login" component={Login} />
               <Route exact path="/register" component={Register} />
-              <Route exact path="/notes" component={AllNotes} />
-              <Route exact path="/notes/add" component={AddNote} />
-              <Route exact path="/my-notes" component={MyNotes} />
-              <Route exact path="/my-reminders" component={MyReminders} />
-              <Route exact path="/my-tips" component={MyTips} />
-              <Route exact path="/favorite" component={Favorite} />
               <PrivateRoute exact path="/profile" component={Profile} />
-              <Route exact path="/settings" component={Settings} />
+              <PrivateRoute exact path="/notes" component={AllNotes} />
+              <PrivateRoute exact path="/notes/add" component={AddNote} />
+              <PrivateRoute exact path="/favorite" component={Favorite} />
+              <PrivateRoute exact path="/my-notes" component={MyNotes} />
+              <PrivateRoute exact path="/my-tips" component={MyTips} />
+              <PrivateRoute
+                exact
+                path="/my-reminders"
+                component={MyReminders}
+              />
             </Switch>
           </div>
           <Footer />

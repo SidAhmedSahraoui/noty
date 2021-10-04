@@ -1,6 +1,10 @@
 const mongoose = require("mongoose");
 
 const NoteSchema = mongoose.Schema({
+  user_id: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "users",
+  },
   fav: {
     type: Boolean,
     default: false,
