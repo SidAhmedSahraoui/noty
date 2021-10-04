@@ -4,9 +4,9 @@
 
 ### Screenshots
 
-<div><img src="./screenshots/home.png" width="800" alt="Home"></div>
+<div><img src="../screenshots/Home.png" width="800" alt="Home"></div>
 
-<div><img src="./screenshots/notes.png" width="800" alt="Notes"></div>
+<div><img src="../screenshots/Notes.png" width="800" alt="Notes"></div>
 <br>
 
 ### How to use
