@@ -12,7 +12,7 @@
 
 ### How to use
 
-1. Download the repositry.
+1. Download the repository.
 2. Install depandencies :
    <code>yarn install</code> or <code>npm install</code>
 3. Run <code>yarn start</code> or <code>npm start</code>.
