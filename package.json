@@ -1,7 +1,7 @@
 {
-  "name": "superhero",
+  "name": "noty",
   "version": "1.0.0",
-  "description": "Super Hero website !",
+  "description": "noty website !",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
@@ -12,7 +12,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/sidahmedsahraoui/superhero.git"
+    "url": "git+https://github.com/sidahmedsahraoui/noty.git"
   },
   "keywords": [],
   "author": "Sid Ahmed Sahraoui",
